@@ -7,16 +7,28 @@
     <groupId>cn.hsb</groupId>
     <artifactId>springcloud-nacos-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>springcloud-nacos-provider</module>
+        <module>springcloud-nacos-consumer</module>
+        <module>springcloud-nacos-consumer-api</module>
+        <module>springcloud-nacos-common</module>
+    </modules>
 
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.complier.source>1.8</maven.complier.source>
-        <maven.complier.target>1.8</maven.complier.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 
-        <junit.verson>4.12</junit.verson>
+        <guava.version>28.2-jre</guava.version>
+        <commons.lang3.version>3.10</commons.lang3.version>
+        <hutool.all.version>5.1.0</hutool.all.version>
         <lombok.verson>1.18.12</lombok.verson>
+        <junit.verson>4.12</junit.verson>
         <logback.classic.verson>1.2.3</logback.classic.verson>
 
         <spring.boot.version>2.1.13.RELEASE</spring.boot.version>
@@ -27,6 +39,17 @@
     <dependencyManagement>
 
         <dependencies>
+            <dependency>
+                <groupId>cn.hsb</groupId>
+                <artifactId>springcloud-nacos-common</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hsb</groupId>
+                <artifactId>springcloud-nacos-consumer-api</artifactId>
+                <version>${version}</version>
+            </dependency>
+
             <!--spring boot dependencies-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -58,9 +81,16 @@
 
             <!--spring cloud-->
             <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+            </dependency>
+
+            <!--feign-->
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring.cloud.netflix.version}</version>
+                <version>${spring.cloud.alibaba.version}</version>
             </dependency>
 
             <!--spring boot-->
@@ -99,6 +129,24 @@
 
             <!--工具-->
             <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.all.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.verson}</version>
@@ -119,5 +167,46 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>
