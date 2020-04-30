@@ -1,0 +1,11 @@
+server.port: 15000
+
+spring.application.name: springcloud-nacos-provider
+
+spring.cloud.nacos.discovery.server-addr: nacos-server.hsb.cn:8848
+
+management.endpoints.web.exposure.include: "*"
+
+bi-model.consumer-server: springcloud-nacos-consumer
+
+com.alibaba.nacos.config.log.level: warn

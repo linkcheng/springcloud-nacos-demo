@@ -1,0 +1,8 @@
+server.port: 8080
+
+spring.application.name: springcloud-nacos-consumer
+
+spring.cloud.nacos.discovery.server-addr: nacos-server.hsb.cn:8848
+
+management.endpoints.web.exposure.include: "*"
+
