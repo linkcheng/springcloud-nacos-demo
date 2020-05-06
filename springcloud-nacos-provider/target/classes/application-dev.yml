@@ -9,3 +9,11 @@ management.endpoints.web.exposure.include: "*"
 bi-model.consumer-server: springcloud-nacos-consumer
 
 com.alibaba.nacos.config.log.level: warn
+
+ribbon:
+  ReadTimeout: 2000
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    cn.hsb.consumer.api.DataServiceApi: debug

@@ -1,4 +1,4 @@
-package cn.hsb.consumer.component;
+package cn.hsb.component;
 
 import cn.hsb.consumer.api.DataServiceApi;
 import cn.hsb.dto.CommonResult;
