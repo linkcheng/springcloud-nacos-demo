@@ -31,7 +31,7 @@
         <junit.verson>4.12</junit.verson>
         <logback.classic.verson>1.2.3</logback.classic.verson>
 
-        <spring.boot.version>2.1.13.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.12</spring.boot.version>
         <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
         <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
     </properties>
